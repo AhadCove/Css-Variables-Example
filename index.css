@@ -1,0 +1,48 @@
+/* Variables */
+:root{
+    --font: #ffc600;
+    --bg: #708090;
+    --speed: 5s;
+    --orbit-height: 45%; 
+    --orbit-width: 45%;
+    --size: 100px;
+}
+
+body{
+    font-size:16px;
+    margin:0;
+    padding:0;
+}
+
+.main-contain{
+    height:100vh;
+    width:100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background: var(--bg);
+    color: var(--font);
+}
+
+.title{
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 8px;
+    margin-bottom: 50px;
+}
+
+.water-img{
+    height: auto;
+    width: var(--size);
+    position: absolute;
+    top: var(--orbit-height);
+    left: var(--orbit-width);
+    animation: orbital var(--speed) linear infinite;
+}
+
+@keyframes orbital {
+    from { transform: rotate(0deg) translateX(300px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(300px) rotate(-360deg); }
+}

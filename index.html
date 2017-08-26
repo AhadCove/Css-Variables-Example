@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main-contain">
+        <div class="title">CSS Variables</div>
+        <img class="water-img" src="./Water.png">
+        <div class="controls">
+            <label for="bg">Background: </label>
+            <input name="bg" type="color" value="#708090" />
+            <label for="font">Font Color: </label>
+            <input name="font" type="color" value="#ffc600" />
+            <label for="size">Size: </label>
+            <input name="size" type="range" min="0" max="200" step="10" value="100" data-sizing="px" />
+            <label for="orbit-height">Orbit Height: </label>
+            <input name="orbit-height" type="range" min="0" max="50" step="5" value="50" data-sizing="%" />
+            <label for="orbit-width">Orbit Width: </label>
+            <input name="orbit-width" type="range" min="0" max="50" step="5" value="50" data-sizing="%" />
+            <label for="speed">Speed: </label>
+            <input name="speed" type="range" min="0" max="10" value="5" data-speed="s" />
+            <!-- <input type="text" placeholder="Name" /> -->
+        </div>
+    </div>
+
+    <script>
+        // Get a node list of all the inputs
+        var inputs = document.querySelectorAll('.controls input');
+
+        // Handles the update after change event
+        function handleUpdate(){
+            console.log(this.value);
+            console.log(this.name);
+            const suffix = this.dataset.speed || this.dataset.sizing || '';
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+        }
+
+        // Loop over inputs and listen for the change event, calling handle update
+        inputs.forEach(input => input.addEventListener('change', handleUpdate));
+        inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+    </script>
+
+    <!-- <script src="./index.js" type="text/javascript"></script>     -->
+</body>
+
+</html>
